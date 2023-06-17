@@ -16,9 +16,11 @@ module.exports={
     async create(attributes){
         const db= await connect()
 
-        db.execute('INSERT INTO departments (`name`) VALUES (?)', [attributes])
-    }
-
+        db.execute('INSERT INTO departments (`name`) VALUES (?)', attributes)
+        .then(result => {
+            return result[0]
+        })
+    },
 
 
 }
