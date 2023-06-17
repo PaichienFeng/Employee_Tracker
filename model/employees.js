@@ -1,6 +1,4 @@
-const { title } = require('process')
 const connect = require('../db/connect')
-const departments = require('./departments')
 
 
 module.exports={
