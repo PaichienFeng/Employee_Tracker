@@ -11,11 +11,9 @@ module.exports={
     },
     
     
-    async create(attributes){
+    async create(name){
         const db= await connect();
-        console.log(attributes)
-        return db.execute('INSERT INTO employee_db.departments (name) VALUES (?)', attributes);
-        
+        return db.query(`INSERT INTO employee_db.departments (name) VALUES (?);`,name);
     },
 
 

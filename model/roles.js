@@ -28,12 +28,9 @@ module.exports={
         
     },
 
-    async update(newTitle, newSalary, newDepartment, id){
+    async update(newRoleId, empId){
         const db = await connect()
-        db.execute('UPDATE roles SET title = ?, salary = ?, departments_id = ? where id =?', [newTitle, newSalary, newDepartment, id])
-        .then(result =>{
-            return result[0]
-        })
+        return db.execute('UPDATE employee_db.employees SET roles_id = ? WHERE id = ?', [newRoleId, empId]);
     },
 
 }
