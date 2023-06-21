@@ -21,7 +21,6 @@ module.exports={
 
     async allEmployees(){
         const db = await connect()
-
        return db.execute('SELECT id, first_name, last_name from employees')
        
     },

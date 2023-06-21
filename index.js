@@ -35,7 +35,7 @@ async function run(){
         }
     
     }).then(()=>{
-        run();
+        return run();
     })
 }
 
