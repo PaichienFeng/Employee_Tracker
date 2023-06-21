@@ -12,6 +12,16 @@ module.exports={
         })
     },
     
+    async allRoles(){
+        const db = await connect()
+
+        db.execute('SELECT title FROM roles')
+        .then(result => {
+        const titles = result.map(row => row.title);
+        return titles;
+  });
+        
+    },
     
     async create([title, salary, departments_id]){
         const db= await connect()
