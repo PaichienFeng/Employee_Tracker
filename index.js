@@ -36,7 +36,10 @@ async function run(){
     
     }).then(()=>{
         return run();
-    })
+    }).catch((err)=>{
+        console.log(err);
+        console.log('Oops. Something went wrong.');
+     })
 }
 
 run()
