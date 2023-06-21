@@ -6,20 +6,15 @@ module.exports={
     async all(){
         const db = await connect()
 
-        db.execute('SELECT * from departments')
-        .then(result =>{
-            return result[0]
-        })
+        return db.execute('SELECT * from departments');
+        
     },
     
     
     async create(attributes){
         const db= await connect()
 
-        db.execute('INSERT INTO departments (`name`) VALUES (?)', attributes)
-        .then(result => {
-            return result[0]
-        })
+        return db.execute('INSERT INTO employee_db.departments (`name`) VALUES (?)', attributes)
     },
 
 

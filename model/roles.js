@@ -6,30 +6,26 @@ module.exports={
     async all(){
         const db = await connect()
 
-        db.execute('SELECT * from roles')
-        .then(result =>{
-            return result[0]
-        })
+       return db.execute(`
+       SELECT roles.id, roles.title, departments.name AS department, roles.salary
+       FROM employee_db.roles
+       JOIN employee_db.departments ON roles.departments_id = departments.id
+     `)
+
     },
     
     async allRoles(){
         const db = await connect()
 
-        db.execute('SELECT title FROM roles')
-        .then(result => {
-        const titles = result.map(row => row.title);
-        return titles;
-  });
-        
+       return db.execute('SELECT * FROM roles')
+
     },
     
-    async create([title, salary, departments_id]){
+    async create(title, salary, departments_id){
         const db= await connect()
 
-        db.execute('INSERT INTO roles (`title, salary, departments_id`) VALUES (?, ?, ?)', [title, salary, departments_id])
-        .then(result => {
-            return result[0]
-        })
+        return db.execute(`INSERT INTO employee_db.roles (title, salary, departments_id) VALUES (?, ?, ?)`, [title, salary, departments_id])
+        
     },
 
     async update(newTitle, newSalary, newDepartment, id){
