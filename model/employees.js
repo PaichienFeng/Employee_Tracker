@@ -8,6 +8,7 @@ module.exports={
 
         db.execute('SELECT * from employees')
         .then(result =>{
+            console.table(result[0])
             return result
         })
     },

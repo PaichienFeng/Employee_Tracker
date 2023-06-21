@@ -12,7 +12,12 @@ inquirer
     
 ]).then(({todo})=>{
     if(todo==='View All Employees'){
-        const allEmployees= emp.all()
-        console.table(allEmployees);
-        return }
+     viewEmployees()
+    }
 })
+
+const viewEmployees = async () =>{
+    const allEmployees= await emp.all()
+    console.table(allEmployees);
+    return 
+}
